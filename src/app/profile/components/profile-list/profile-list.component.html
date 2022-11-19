@@ -1,0 +1,54 @@
+<div class="container card-group">
+  <h1 class="col-12">{{ "profiles.title" | translate }}</h1>
+
+  <div id="alert-subscribe" class="alert alert-success col-12 mb-5 mx-auto fw-bold animate__animated animate__fadeIn d-none" role="alert">
+    <i class="fa-solid fa-circle-check me-2"></i>
+    <span id="alert-subscribe-text"></span>
+  </div>
+
+  <div class="col-12 mb-4">
+    <label for="search" class="form-label">{{ "profiles.search.label" | translate }}</label>
+    <input class="form-control" type="search" name="search" [placeholder]="'profiles.search.placeholder' | translate" aria-label="Search"
+           [(ngModel)]="search" (keyup)="searchProfiles()">
+  </div>
+
+  <div id="alert-search" class="alert alert-info col-lg-6 col-md-6 col-sm-12 py-2 mb-5 fw-bold" role="alert">
+    <i class="fa-solid fa-circle-info me-2"></i>
+    <span id="alert-search-text">{{ (users$ | async)?.length }} {{ "profiles.search.info" | translate }}</span>
+  </div>
+
+  <div class="row g-4 col-sm-12">
+    <div *ngFor="let user of users$ | async" class="col-lg-4 col-md-6 col-12 animate__animated animate__fadeIn animate_slow">
+      <div class="card card-item bg-dark border-secondary p-1">
+        <div class="card-body position-relative">
+          <h2 class="card-title pt-3 pb-2">{{ user.userName }}</h2>
+
+          <p class="fw-bold mb-5">{{ user.name }}</p>
+
+          <p *ngIf="user.profile?.description" class="card-description">{{ user.profile?.description | cutText:150 }}</p>
+          <p *ngIf="!user.profile?.description" class="card-description">{{ "profiles.unspecified" | translate }}</p>
+
+          <a class="btn btn-outline-info my-3 me-3 position-absolute bottom-0 end-0" role="button" [routerLink]="['/profiles', user.name]"
+             data-bs-toggle="tooltip" data-bs-placement="top" title="">
+            <i class="fa-solid fa-eye me-1"></i>
+            <span>{{ "profiles.buttons.view" | translate }}</span>
+          </a>
+
+          <button [ngClass]="isNotSubscribed(user) ? '' : 'd-none'" (click)="subscribe(user.name)"
+                  type="button" class="btn btn-outline-success my-3 ms-3 position-absolute bottom-0 start-0"
+                  data-bs-toggle="tooltip" data-bs-placement="top" title="">
+            <i class="fa-solid fa-user-plus me-1"></i>
+            <span>{{ "profiles.buttons.subscribe" | translate }}</span>
+          </button>
+
+          <button [ngClass]="isSubscribed(user) ? '' : 'd-none'" (click)="unsubscribe(user.name)"
+                  type="button" class="btn btn-outline-danger my-3 ms-3 position-absolute bottom-0 start-0"
+                  data-bs-toggle="tooltip" data-bs-placement="top" title="">
+            <i class="fa-solid fa-user-minus me-1"></i>
+            <span>{{ "profiles.buttons.unsubscribe" | translate }}</span>
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
