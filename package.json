@@ -8,7 +8,7 @@
     "watch": "ng build --watch --configuration development",
     "test": "ng test",
     "start": "http-server-spa dist/naxter-frontend index.html $PORT",
-    "heroku-postbuild": "ng build --prod && npm install -g http-server-spa"
+    "heroku-postbuild": "ng build --configuration production && npm install -g http-server-spa"
   },
   "private": true,
   "dependencies": {
