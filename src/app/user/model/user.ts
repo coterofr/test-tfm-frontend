@@ -10,6 +10,7 @@ export class User {
   userName: string;
   password: string;
   block: boolean;
+  rating: number;
   roles: Role[];
   profile: Profile | null;
   themes: Theme[] | null;
@@ -20,6 +21,7 @@ export class User {
               userName: string,
               password: string,
               block: boolean,
+              rating: number,
               roles: Role[],
               profile: Profile | null,
               themes: Theme[] | null,
@@ -29,6 +31,7 @@ export class User {
     this.userName = userName;
     this.password = password;
     this.block = block;
+    this.rating = rating;
     this.roles = roles;
     this.profile = profile;
     this.themes = themes;

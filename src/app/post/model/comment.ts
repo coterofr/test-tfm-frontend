@@ -7,14 +7,17 @@ export class Comment {
   content: string;
   user: User | null;
   post: Post | null;
+  date: Date | null;
 
   constructor(id: string,
               content: string,
               user: User | null,
-              post: Post | null) {
+              post: Post | null,
+              date: Date | null) {
     this.id = id;
     this.content = content;
     this.user = user;
     this.post = post;
+    this.date = date;
   }
 }

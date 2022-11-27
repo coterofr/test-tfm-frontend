@@ -12,6 +12,8 @@ export class UrlApi {
   public static DELETE: string = 'delete';
   public static SEARCH: string = 'search';
   public static LIST: string = 'list';
+  public static TOP: string = 'top';
+  public static RATE: string = 'rate';
 
   public static AUTH: string = 'auth';
   public static REGISTER: string = 'register';
@@ -19,6 +21,7 @@ export class UrlApi {
   public static REFRESH: string = 'refresh';
 
   public static USERS: string = 'users';
+  public static AUTHORS: string = 'authors';
   public static ACCOUNT: string = 'account';
   public static PROFILES: string = 'profiles';
   public static PROFILE: string = 'profile';
@@ -34,6 +37,7 @@ export class UrlApi {
 
   public static THEMES: string = 'themes';
   public static POSTS: string = 'posts';
+  public static HOME: string = 'home';
   public static TAGS: string = 'tags';
   public static COMMENTS: string = 'comments';
 

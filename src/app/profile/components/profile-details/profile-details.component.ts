@@ -34,7 +34,7 @@ export class ProfileDetailsComponent implements OnInit {
               private alertService: AlertService,
               private translateService: TranslateService,
               private route: ActivatedRoute) {
-    this.user = new User('', '', '', '', false, [], null, null, null);
+    this.user = new User('', '', '', '', false, 0, [], null, null, null);
     this.subscription = null;
   }
 

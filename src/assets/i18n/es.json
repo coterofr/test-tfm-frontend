@@ -147,6 +147,7 @@
     "title": "Mi cuenta de perfil",
     "visits": "Visitas: ",
     "role": "Rol: ",
+    "rating": "Valoración: ",
     "changeRole": "Permitir suscribirse a los creadores de contenido y valorar y comentar sus publicaciones",
     "name": {
       "label": "Usuario: ",
@@ -219,7 +220,10 @@
 
   "home": {
     "title": "Naxter",
-    "welcome": "Bienvenido "
+    "welcome": "Bienvenido ",
+    "slider": "Publicaciones más destacas",
+    "subscriptions": "Tus suscripciones",
+    "posts": "Publicaciones destacadas de "
   },
 
   "themes": {
@@ -346,7 +350,8 @@
       }
     },
     "author": "Autor",
-    "rating": "Valora esta publicación!",
+    "rating": "Valoración de la publicación",
+    "rate": "Valora esta publicación!",
     "buttons": {
       "save": {
         "title": "Guardar",
@@ -378,6 +383,7 @@
       "titleDeleted": "Error en la eliminación de la publicación",
       "message": "Se ha producido un error en el envío de los datos, por favor inténtelo de nuevo"
     },
+    "rated": "Su valoración ha sido incorporada correctamente, la media de valoración ha pasado de {{ oldValue }} a {{ newValue }}",
 
     "tags": {
       "title": "Etiquetas",
@@ -404,6 +410,37 @@
         "titleDeleted": "Error en la eliminación de la etiqueta",
         "message": "Se ha producido un error en el envío de los datos, por favor inténtelo de nuevo"
       }
+    }
+  },
+
+  "comment": {
+    "title": "Comentario",
+    "content": {
+      "label": "Comentario: ",
+      "placeholder": "Añade un comentario...",
+      "errors": {
+        "required": "El comentario es obligatorio",
+        "minlength": "El comentario debe tener 1 caracteres como mínimo",
+        "maxlength": "El comentario debe tener 500 caracteres como máximo"
+      }
+    },
+    "buttons": {
+      "add": "Comentar",
+      "edit": "Actualizar",
+      "delete": "Eliminar"
+    },
+    "confirmDelete": {
+      "title": "Confirmación de eliminación del comentario",
+      "message": "¿Está seguro de que quiere borrar el comentario?"
+    },
+    "added": "Comentario añadido correctamente",
+    "updated": "Comentario actualizado correctamente",
+    "deleted": "Eliminación del comentario realizada correctamente",
+    "errors": {
+      "titleAdded": "Error en la adición del comentario",
+      "titleUpdated": "Error en la actualización del comentario",
+      "titleDeleted": "Error en la eliminación del comentario",
+      "message": "Se ha producido un error en el envío de los datos, por favor inténtelo de nuevo"
     }
   },
 

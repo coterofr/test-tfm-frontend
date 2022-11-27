@@ -147,6 +147,7 @@
     "title": "My profile account",
     "visits": "Visits: ",
     "role": "Role: ",
+    "rating": "Rating: ",
     "changeRole": "Allow to subscribe to content creators and rate and comment on their posts",
     "name": {
       "label": "User: ",
@@ -219,7 +220,10 @@
 
   "home": {
     "title": "Naxter",
-    "welcome": "Welcome "
+    "welcome": "Welcome ",
+    "slider": "Most featured posts",
+    "subscriptions": "Your subscriptions",
+    "posts": "Featured posts of "
   },
 
   "themes": {
@@ -346,7 +350,8 @@
       }
     },
     "author": "Author",
-    "rating": "Rate this post!",
+    "rating": "Post rating",
+    "rate": "Rate this post!",
     "buttons": {
       "save": {
         "title": "Save",
@@ -378,6 +383,7 @@
       "titleDeleted": "Post deleted failed",
       "message": "There was an error sending the data, please try again"
     },
+    "rated": "Your rating has been incorporated correctly, the average rating has changed from {{ oldValue }} to {{ newValue }}",
 
     "tags": {
       "title": "Tags",
@@ -404,6 +410,37 @@
         "titleDeleted": "Tag deleted failed",
         "message": "There was an error sending the data, please try again"
       }
+    }
+  },
+
+  "comment": {
+    "title": "Comment",
+    "content": {
+      "label": "Comment: ",
+      "placeholder": "Add comment...",
+      "errors": {
+        "required": "Comment is required",
+        "minlength": "Comment must be at least 5 characters",
+        "maxlength": "Comment can be max 25 characters long"
+      }
+    },
+    "buttons": {
+      "add": "Comment",
+      "edit": "Update",
+      "delete": "Delete"
+    },
+    "confirmDelete": {
+      "title": "Confirm delete comment",
+      "message": "Are you sure you want to delete the comment"
+    },
+    "added": "Comment added successfully",
+    "updated": "Comment updated successfully",
+    "deleted": "Comment deleted successfully",
+    "errors": {
+      "titleAdded": "Comment added failed",
+      "titleUpdated": "Comment updated failed",
+      "titleDeleted": "Comment deleted failed",
+      "message": "There was an error sending the data, please try again"
     }
   },
 

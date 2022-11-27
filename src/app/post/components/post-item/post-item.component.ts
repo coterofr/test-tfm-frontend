@@ -17,6 +17,9 @@ export class PostItemComponent implements OnInit {
   @Input() post: Post;
   @Output() deletePost: EventEmitter<string>;
 
+  totalStars: number = 10;
+  readonly: boolean = true;
+
   constructor(private postService: PostService,
               private jwtTokenService: JwtTokenService,
               private translateService: TranslateService) {

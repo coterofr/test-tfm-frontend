@@ -35,10 +35,11 @@
     "bootstrap": "^5.2.1",
     "express": "^4.18.2",
     "jquery": "^3.6.1",
+    "ng-starrating": "^1.0.20",
     "path": "^0.12.7",
     "rxjs": "~7.5.0",
     "sweetalert2": "^11.5.2",
-    "swiper": "^8.4.2",
+    "swiper": "^6.5.0",
     "tslib": "^2.3.0",
     "typescript": "~4.7.2",
     "zone.js": "~0.11.4"

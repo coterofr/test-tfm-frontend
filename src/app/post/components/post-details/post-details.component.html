@@ -1,6 +1,11 @@
 <div class="container">
   <h1 class="d-inline-block">{{ "post.title" | translate }}: {{ post.name }}</h1>
 
+  <div id="alert-rating" class="alert alert-success col-12 mb-5 mx-auto fw-bold animate__animated animate__fadeIn d-none" role="alert">
+    <i class="fa-solid fa-circle-check me-2"></i>
+    <span id="alert-rating-text"></span>
+  </div>
+
   <div class="post-central animate__animated animate__fadeIn animate_slow">
     <div class="row">
       <div class="col-12 col-md-4 mb-3">
@@ -22,16 +27,28 @@
     </div>
 
     <div class="row">
-      <div class="col-12 mb-5">
+      <div class="col-12 mb-3">
         <p class="form-label label-xl">{{ "post.description.title" | translate }}</p>
         <p class="form-label text-justify">{{ post.description }}</p>
       </div>
     </div>
 
-    <div class="row">
-      <div class="col-12 mb-3">
-        <p class="form-label label-xl">{{ "post.rating" | translate }}</p>
-        <p class="form-label"></p>
+    <div *ngIf="post.id" class="row">
+      <div class="col-12 mb-5">
+        <p class="form-label label-xl">
+          <span *ngIf="isLoggedPost">{{ "post.rating" | translate }}</span>
+          <span *ngIf="!isLoggedPost">{{ "post.rate" | translate }}</span>
+        </p>
+        
+        <star-rating [value]="rating" 
+                     [totalstars]="totalStars" 
+                     checkedcolor="yellow" 
+                     uncheckedcolor="grey" 
+                     size="20px" 
+                     [readonly]="isLoggedPost" 
+                     (rate)="onRate($event)">
+        </star-rating>
+
       </div>
     </div>
 
@@ -45,4 +62,8 @@
       <span>{{ "generic.buttons.return" | translate }}</span>
     </a>
   </div>
+</div>
+
+<div *ngIf="post.id" class="container">
+  <app-comment-list [post]="post"></app-comment-list>
 </div>

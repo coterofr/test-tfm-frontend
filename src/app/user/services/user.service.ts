@@ -21,6 +21,10 @@ export class UserService {
     return this.http.get<UserPageable>(UrlApi.generateUrl(UrlApi.BASIC, UrlApi.USERS));
   }
 
+  getSubscribedAuthors(subscriber: string): Observable<User[]> {
+    return this.http.get<User[]>(UrlApi.generateUrl(UrlApi.BASIC, UrlApi.USERS, UrlApi.SLASH, subscriber, UrlApi.SLASH, UrlApi.SUBSCRIPTIONS, UrlApi.SLASH, UrlApi.AUTHORS));
+  }
+
   blockUser(id: string): Observable<User> {
     return this.http.post<User>(UrlApi.generateUrl(UrlApi.BASIC, UrlApi.USERS, UrlApi.SLASH, id, UrlApi.SLASH, UrlApi.BLOCK), id);
   }

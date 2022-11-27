@@ -4,11 +4,12 @@
 @import '~bootstrap/dist/css/bootstrap.min.css';
 @import '~@fortawesome/fontawesome-free/css/all.css';
 @import '~animate.css/animate.min.css';
-@import '~swiper/swiper.min.css';
+@import '~swiper/swiper-bundle.min.css';
 
 
 $principal-color: #0dcaf0;
 $background-color: #212529;
+$background-opacity-color: rgba(0,0,0,0.8);
 $shadow-color: #6c757d;
 $text-color: #ffffff;
 $error-color: #dc3545;
@@ -102,6 +103,10 @@ thead {
   color: $text-color !important;
 }
 
+
+.label-sm {
+  font-size: 0.9rem !important;
+}
 
 .label-lg {
   font-size: 1.1rem !important;

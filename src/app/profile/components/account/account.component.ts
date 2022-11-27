@@ -30,6 +30,9 @@ export class AccountComponent implements OnInit {
   account: Account;
   profileForm: FormGroup;
 
+  totalStars: number = 10;
+  readonly: boolean = true;
+
   private readonly ERROR_MESSAGE = 'exists';
 
   constructor(private fb: FormBuilder,
@@ -41,7 +44,7 @@ export class AccountComponent implements OnInit {
               private alertService: AlertService,
               private translateService: TranslateService,
               private router: Router) {
-    this.user = new User('', '', '', '', false, [], null, null, null);
+    this.user = new User('', '', '', '', false, 0, [], null, null, null);
     this.account = new Account('', '', '', '', new Date(), 0, 0);
     this.profileForm = this.fb.group({
       name: new FormControl(''),
@@ -66,7 +69,7 @@ export class AccountComponent implements OnInit {
     const name: string | null = this.jwtTokenService.getName() as string;
     this.user = await firstValueFrom(this.profileService.getAccount(name));
     const profile: Profile = this.user.profile as Profile;
-    this.account = new Account(this.user.name, this.user.email, this.user.userName, profile.description, profile.dateBirth, profile.visits, profile.rating);
+    this.account = new Account(this.user.name, this.user.email, this.user.userName, profile.description, profile.dateBirth, profile.visits, this.user.rating);
 
     this.profileForm = this.fb.group({
       name: new FormControl(this.account.name, [

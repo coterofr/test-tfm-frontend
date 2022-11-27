@@ -1,11 +1,11 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, ParamMap } from '@angular/router';
 import { TranslateService } from '@ngx-translate/core';
+import { StarRatingComponent } from 'ng-starrating';
 import { firstValueFrom } from 'rxjs';
 import { JwtTokenService } from 'src/app/auth/services/jwt-token.service';
-import { AlertService } from 'src/app/shared/services/alert.service';
 import { Post } from '../../model/post';
-import { CommentService } from './../../services/comment.service';
+import { AlertService } from './../../../shared/services/alert.service';
 import { PostService } from './../../services/post.service';
 
 declare var bootstrap: any;
@@ -22,8 +22,10 @@ export class PostDetailsComponent implements OnInit {
 
   name!: string;
 
+  rating = 0;
+  totalStars: number = 10;
+
   constructor(private postService: PostService,
-              private commentService: CommentService,
               private jwtTokenService: JwtTokenService,
               private alertService: AlertService,
               private translateService: TranslateService,
@@ -46,16 +48,29 @@ export class PostDetailsComponent implements OnInit {
     this.id = paramMap.get('id') as string;
     this.post = await firstValueFrom(this.postService.getPost(this.id));
 
-    this.name = this.jwtTokenService.getName() as string;
+    this.rating = this.post.rating;
 
-    this.loadComments();
+    this.name = this.jwtTokenService.getName() as string;
   }
 
-  private loadComments() { }
+  get loggedUser(): string {
+    return this.jwtTokenService.getName() as string;
+  }
 
   get isLoggedProducer(): boolean {
     return this.jwtTokenService.isProducer();
   }
 
-  comment() { }
+  get isLoggedPost(): boolean {
+    return this.loggedUser === this.post.user?.name;
+  }
+
+  onRate($event: { oldValue: number, newValue: number, starRating: StarRatingComponent }) {
+    this.postService.ratePost(this.post.id, $event.newValue).subscribe(async (post: Post) => {
+      this.post = post;
+      this.rating = this.post.rating;
+
+      await this.alertService.showAlert('alert-rating', 'alert-rating-text', true, this.translateService.instant('post.rated', {oldValue: $event.oldValue, newValue: this.rating}));
+    });
+  }
 }

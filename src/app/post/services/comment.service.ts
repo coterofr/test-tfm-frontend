@@ -17,7 +17,7 @@ export class CommentService {
   }
 
   getComments(idPost: string): Observable<Comment[]> {
-    return this.http.get<Comment[]>(UrlApi.generateUrl(UrlApi.BASIC, UrlApi.POSTS, UrlApi.SLASH, idPost, UrlApi.SLASH, UrlApi.COMMENTS));
+    return this.http.get<Comment[]>(UrlApi.generateUrl(UrlApi.BASIC, UrlApi.POSTS, UrlApi.SLASH, idPost, UrlApi.SLASH, UrlApi.COMMENTS, UrlApi.SLASH, UrlApi.LIST));
   }
 
   addComment(idPost: string, postComment: PostComment): Observable<Comment> {

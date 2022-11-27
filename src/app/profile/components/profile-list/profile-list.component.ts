@@ -25,6 +25,9 @@ export class ProfileListComponent implements OnInit {
   search: string = "";
   searchProfile: Subject<string> = new Subject();
 
+  totalStars: number = 10;
+  readonly: boolean = true;
+
   constructor(private profileService: ProfileService,
               private roleService: RoleService,
               private subscriptionService: SubscriptionService,
@@ -61,6 +64,10 @@ export class ProfileListComponent implements OnInit {
 
   get isLoggedConsumer(): boolean {
     return this.jwtTokenService.isConsumer();
+  }
+
+  getRating(user: User): number {
+    return user.rating;
   }
 
   searchProfiles() {

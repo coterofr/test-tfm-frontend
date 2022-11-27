@@ -6,7 +6,15 @@
       <span class="badge bg-primary badge-lg me-2 mb-2" data-bs-toggle="tooltip" data-bs-placement="top" title="">{{ tag.name }}</span>
     </div>
 
-    <p *ngIf="post.description" class="card-description text-justify my-3">{{ post.description | cutText:100 }}</p>
+    <star-rating [value]="post.rating" 
+                 [totalstars]="totalStars" 
+                 checkedcolor="yellow" 
+                 uncheckedcolor="grey" 
+                 size="20px" 
+                 [readonly]="readonly">
+    </star-rating>
+
+    <p *ngIf="post.description" class="card-description text-justify my-3">{{ post.description | cutText:200 }}</p>
 
     <div class="position-absolute bottom-0 end-0">
       <a *ngIf="canDelete" class="btn btn-outline-danger my-3 me-3" role="button" (click)="delete()"
