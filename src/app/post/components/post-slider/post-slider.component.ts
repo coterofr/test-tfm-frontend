@@ -25,7 +25,7 @@ export class PostSliderComponent implements OnInit, AfterViewInit {
 
     setTimeout(() => {
       this.swiper.update()
-    }, 1000)
+    }, 3500)
   }
 
   prev(): void {
