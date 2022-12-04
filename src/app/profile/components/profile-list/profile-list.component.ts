@@ -19,11 +19,12 @@ declare var bootstrap: any;
 })
 export class ProfileListComponent implements OnInit {
 
-  name!: string;
+  private name!: string;
+  private subscriptions!: Subscription[];
+  private searchProfile: Subject<string> = new Subject();
+  
   users$: Observable<User[]> = new Observable<User[]>();
-  subscriptions!: Subscription[];
   search: string = "";
-  searchProfile: Subject<string> = new Subject();
 
   totalStars: number = 10;
   readonly: boolean = true;
@@ -62,6 +63,10 @@ export class ProfileListComponent implements OnInit {
     this.loadSubscriptions();
   }
 
+  get loggedUser(): string {
+    return this.jwtTokenService.getName() as string;
+  }
+
   get isLoggedConsumer(): boolean {
     return this.jwtTokenService.isConsumer();
   }
@@ -74,20 +79,32 @@ export class ProfileListComponent implements OnInit {
     this.searchProfile.next(this.search);
   }
 
+  private isConsumer(user: User): boolean {
+    return this.roleService.isProducer(user);
+  }
+
   isProducer(user: User): boolean {
     return this.roleService.isProducer(user);
   }
 
-  hasSubscription(producer: string): boolean {
+  private isProducerNotLogged(producer: User): boolean {
+    return producer.name !== this.name;
+  }
+
+  canChat(producer: User): boolean {
+    return this.isProducerNotLogged(producer) && this.isLoggedConsumer && this.isConsumer(producer);
+  }
+
+  private hasSubscription(producer: string): boolean {
     return this.subscriptions && this.subscriptions.some((suscription: Subscription) => suscription.subscriber?.name === this.name && suscription.producer?.name === producer);
   }
 
   isSubscribed(producer: User): boolean {
-    return producer.name !== this.name && this.isLoggedConsumer && this.hasSubscription(producer.name) && this.isProducer(producer);
+    return this.isProducerNotLogged(producer) && this.isLoggedConsumer && this.hasSubscription(producer.name) && this.isProducer(producer);
   }
 
   isNotSubscribed(producer: User): boolean {
-    return producer.name !== this.name && this.isLoggedConsumer && !this.hasSubscription(producer.name) && this.isProducer(producer);
+    return this.isProducerNotLogged(producer) && this.isLoggedConsumer && !this.hasSubscription(producer.name) && this.isProducer(producer);
   }
 
   subscribe(producer: string): void {

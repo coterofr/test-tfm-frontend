@@ -21,9 +21,10 @@ export class CommentListComponent implements OnInit {
 
   @Input() post: Post;
 
+  private postComment: PostComment;
+  
   comments: Comment[];
   commentForm: FormGroup;
-  postComment: PostComment;
 
   constructor(private fb: FormBuilder,
               private commentService: CommentService,

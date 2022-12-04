@@ -15,11 +15,13 @@ declare var bootstrap: any;
 })
 export class PostListComponent implements OnInit {
 
+  private searchPost: Subject<string> = new Subject();
+
   posts$: Observable<Post[]> = new Observable<Post[]>();
+  
   searchTheme: string = '';
   searchName: string = '';
   searchUser: string = '';
-  searchPost: Subject<string> = new Subject();
 
   constructor(private postService: PostService,
               private jwtTokenService: JwtTokenService,

@@ -13,10 +13,11 @@ declare var bootstrap: any;
 })
 export class ThemeListComponent implements OnInit {
 
-  name!: string;
+  private name!: string;
+  private searchTheme: Subject<string> = new Subject();
+  
   themes$: Observable<Theme[]> = new Observable<Theme[]>();
   search: string = "";
-  searchTheme: Subject<string> = new Subject();
 
   constructor(private themeService: ThemeService,
               private jwtTokenService: JwtTokenService) {

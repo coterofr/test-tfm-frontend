@@ -14,6 +14,7 @@ export class UrlApi {
   public static LIST: string = 'list';
   public static TOP: string = 'top';
   public static RATE: string = 'rate';
+  public static SEND: string = 'send';
 
   public static AUTH: string = 'auth';
   public static REGISTER: string = 'register';
@@ -42,6 +43,7 @@ export class UrlApi {
   public static COMMENTS: string = 'comments';
 
   public static CHAT: string = 'chat';
+  public static MESSAGES: string = 'messages';
   
   public static MERCHANDASING: string = 'merchandising';
   public static ITEMS: string = 'items';

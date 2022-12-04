@@ -459,8 +459,8 @@
     },
     "buttons": {
       "view": "Ver",
-      "subscribe": "Suscribirse",
-      "unsubscribe": "Desuscribirse"
+      "subscribe": "Susc.",
+      "unsubscribe": "Desusc."
     }
   },
 
@@ -477,9 +477,38 @@
     "userName": "Nombre: ",
     "description": "Descripción: ",
     "dateBirth": "Fecha de nacimiento: ",
+    "rating": "Valoración",
     "buttons": {
       "subscribe": "Suscribirse",
       "unsubscribe": "Desuscribirse"
+    }
+  },
+
+  "chat": {
+    "title": "Chat",
+    "message": {
+      "label": "Mensaje: ",
+      "placeholder": "Envía un mensaje...",
+      "errors": {
+        "required": "El mensaje es obligatorio",
+        "minlength": "El mensaje debe tener 1 caracteres como mínimo",
+        "maxlength": "El mensaje debe tener 250 caracteres como máximo"
+      },
+      "sended": "Mensaje enviado correctamente"
+    },
+    "buttons": {
+      "chat": {
+        "title": "Chat",
+        "tooltip": "Acceder al chat"
+      },
+      "send": {
+        "title": "Enviar",
+        "tooltip": "Enviar mensaje"
+      }
+    },
+    "errors": {
+      "title": "Error en el envío del mensaje",
+      "message": "Se ha producido un error en el envío del mensaje, por favor inténtelo de nuevo"
     }
   },
 

@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { ActivatedRoute, ParamMap } from '@angular/router';
+import { ActivatedRoute, ParamMap, Router } from '@angular/router';
 import { TranslateService } from '@ngx-translate/core';
 import { StarRatingComponent } from 'ng-starrating';
 import { firstValueFrom } from 'rxjs';
@@ -17,10 +17,10 @@ declare var bootstrap: any;
 })
 export class PostDetailsComponent implements OnInit {
 
-  id!: string;
+  private id!: string;
+  private home!: string;
+  
   post: Post;
-
-  name!: string;
 
   rating = 0;
   totalStars: number = 10;
@@ -29,6 +29,7 @@ export class PostDetailsComponent implements OnInit {
               private jwtTokenService: JwtTokenService,
               private alertService: AlertService,
               private translateService: TranslateService,
+              private router: Router,
               private route: ActivatedRoute) {
     this.post = new Post('', '', '', null, null, new Date(), false, '', null, 0);
   }
@@ -46,11 +47,12 @@ export class PostDetailsComponent implements OnInit {
   private async initData() {
     const paramMap: ParamMap = await firstValueFrom(this.route.paramMap);
     this.id = paramMap.get('id') as string;
+    const queryMap: ParamMap = await firstValueFrom(this.route.queryParamMap);
+    this.home = queryMap.get('return') as string;     
+
     this.post = await firstValueFrom(this.postService.getPost(this.id));
 
     this.rating = this.post.rating;
-
-    this.name = this.jwtTokenService.getName() as string;
   }
 
   get loggedUser(): string {
@@ -72,5 +74,13 @@ export class PostDetailsComponent implements OnInit {
 
       await this.alertService.showAlert('alert-rating', 'alert-rating-text', true, this.translateService.instant('post.rated', {oldValue: $event.oldValue, newValue: this.rating}));
     });
+  }
+
+  return() {
+    if(this.home) {
+      this.router.navigateByUrl('posts/home');
+    } else {
+      this.router.navigateByUrl('posts/list');
+    }
   }
 }

@@ -24,9 +24,10 @@ declare var bootstrap: any;
 })
 export class UserDetailsComponent implements OnInit {
 
-  id!: string;
+  private id!: string;
+  private configUser: ConfigUser;
+  
   user: User;
-  configUser: ConfigUser;
   configForm: FormGroup;
 
   private readonly ERROR_MESSAGE = 'exists';

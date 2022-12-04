@@ -19,10 +19,10 @@ declare var bootstrap: any;
 })
 export class RegisterComponent implements OnInit {
 
-  registerUser: RegisterUser;
-  registerForm: FormGroup;
-
+  private registerUser: RegisterUser;
   private readonly ERROR_MESSAGE = 'exists';
+  
+  registerForm: FormGroup;
 
   constructor(private fb: FormBuilder,
               private authService: AuthService,

@@ -9,11 +9,7 @@ import { PayloadToken } from '../model/payload-token';
 })
 export class JwtTokenService {
 
-  roles: string[];
-
-  constructor(private localStorageService: LocalStorageService) {
-    this.roles = [];
-  }
+  constructor(private localStorageService: LocalStorageService) { }
 
   setJwtToken(jwtToken: string): void {
     this.localStorageService.remove(ConstApi.JWT_TOKEN);

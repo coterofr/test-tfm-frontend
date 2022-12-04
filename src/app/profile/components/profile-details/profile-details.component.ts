@@ -21,11 +21,14 @@ declare var bootstrap: any;
 })
 export class ProfileDetailsComponent implements OnInit {
 
-  id!: string;
+  private id!: string;
+  private name!: string;
+  private subscription: Subscription | null;
+  
   user: User;
-  subscription: Subscription | null;
 
-  name!: string;
+  totalStars: number = 10;
+  readonly: boolean = true;
 
   constructor(private profileService: ProfileService,
               private roleService: RoleService,
@@ -48,7 +51,7 @@ export class ProfileDetailsComponent implements OnInit {
     tooltipTriggerList.map((tooltipTriggerEl) => new bootstrap.Tooltip(tooltipTriggerEl));
   }
 
-  private async initData() {
+  private async initData(): Promise<void> {
     const paramMap: ParamMap = await firstValueFrom(this.route.paramMap);
     this.id = paramMap.get('id') as string;
     this.user = await firstValueFrom(this.profileService.getProfile(this.id));
@@ -59,7 +62,7 @@ export class ProfileDetailsComponent implements OnInit {
     this.visit();
   }
 
-  private loadSubscription() {
+  private loadSubscription(): void {
     if(this.name !== this.user.name) {
       firstValueFrom(this.subscriptionService.getSubscription(this.name, this.user.name)).then((subscription: Subscription) => {
         this.subscription = subscription
@@ -67,7 +70,7 @@ export class ProfileDetailsComponent implements OnInit {
     }
   }
 
-  private visit() {
+  private visit(): void {
     let visualization: Visualization = new Visualization(this.name, this.user.name);
     this.profileService.visit(this.id, visualization).subscribe();
   }

@@ -6,8 +6,8 @@ import { ConstApi } from '../utils/const-api';
 })
 export class AlertService {
 
-  element:  HTMLElement | null;
-  textElement:  HTMLElement | null;
+  private element:  HTMLElement | null;
+  private textElement:  HTMLElement | null;
 
   constructor() {
     this.element = null;

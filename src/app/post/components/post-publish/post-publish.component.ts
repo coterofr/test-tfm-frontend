@@ -24,11 +24,13 @@ declare var bootstrap: any;
 })
 export class PostPublishComponent implements OnInit {
 
+  private post: Post;
+  private userPost: UserPost;
+
   id!: string;
-  post: Post;
-  userPost: UserPost;
-  postForm: FormGroup;
   themes!: Theme[];
+  
+  postForm: FormGroup;
 
   tags: Tag[] = [];
   tagName: string = '';

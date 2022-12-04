@@ -56,7 +56,7 @@
       <p class="form-label">{{ post.date | date: 'dd-MM-yyyy' }}</p>
     </div>
 
-    <a class="btn btn-outline-primary my-3 me-3 float-end" role="button" [routerLink]="['/posts/list']"
+    <a class="btn btn-outline-primary my-3 me-3 float-end" role="button" (click)="return()"
        data-bs-toggle="tooltip" data-bs-placement="top" title="">
       <i class="fa-solid fa-arrow-rotate-left me-1"></i>
       <span>{{ "generic.buttons.return" | translate }}</span>

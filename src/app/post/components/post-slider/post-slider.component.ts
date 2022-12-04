@@ -10,6 +10,7 @@ import { Post } from '../../model/post';
 export class PostSliderComponent implements OnInit, AfterViewInit {
 
   @Input() posts: Post[];
+  
   swiper!: Swiper;
 
   constructor() {
@@ -23,9 +24,7 @@ export class PostSliderComponent implements OnInit, AfterViewInit {
       loop: true
     });
 
-    setTimeout(() => {
-      this.swiper.update()
-    }, 3500)
+    setTimeout(() => this.swiper.update(), 3500);
   }
 
   prev(): void {

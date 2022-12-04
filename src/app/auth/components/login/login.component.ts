@@ -19,10 +19,10 @@ declare var bootstrap: any;
 })
 export class LoginComponent implements OnInit {
 
-  loginUser: LoginUser;
-  loginForm: FormGroup;
-
+  private loginUser: LoginUser;
   private readonly ERROR_MESSAGE = 'block';
+  
+  loginForm: FormGroup;
 
   constructor(private fb: FormBuilder,
               private authService: AuthService,

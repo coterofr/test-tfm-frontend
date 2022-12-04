@@ -20,6 +20,10 @@ const appRoutes: Routes = [
     loadChildren: () => import('./profile/profile.module').then((m) => m.ProfileModule),
   },
   {
+    path: 'chat',
+    loadChildren: () => import('./chat/chat.module').then((m) => m.ChatModule),
+  },
+  {
     path: 'users',
     loadChildren: () => import('./user/user.module').then((m) => m.UserModule),
   },

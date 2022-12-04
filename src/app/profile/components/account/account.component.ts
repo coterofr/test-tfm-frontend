@@ -26,8 +26,9 @@ declare var bootstrap: any;
 })
 export class AccountComponent implements OnInit {
 
+  private account: Account;
+  
   user: User;
-  account: Account;
   profileForm: FormGroup;
 
   totalStars: number = 10;

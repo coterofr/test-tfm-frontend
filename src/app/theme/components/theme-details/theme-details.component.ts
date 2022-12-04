@@ -19,13 +19,14 @@ declare var bootstrap: any;
 })
 export class ThemeDetailsComponent implements OnInit {
 
-  update: boolean = false;
-  id!: string;
-  theme: Theme;
-  userTheme: UserTheme;
-  themeForm: FormGroup;
-
+  private id!: string;
+  private theme: Theme;
+  private userTheme: UserTheme;
   private readonly ERROR_MESSAGE = 'exists';
+  
+  update: boolean = false;
+  
+  themeForm: FormGroup;
 
   constructor(private fb: FormBuilder,
               private themeService: ThemeService,

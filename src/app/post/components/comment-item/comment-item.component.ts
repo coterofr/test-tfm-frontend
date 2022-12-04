@@ -21,8 +21,9 @@ export class CommentItemComponent implements OnInit {
   @Input() comment: Comment;
   @Output() deleteComment: EventEmitter<string>;
 
+  private postComment: PostComment;
+  
   commentForm: FormGroup;
-  postComment: PostComment;
   editMode: boolean = false;
 
   constructor(private fb: FormBuilder,

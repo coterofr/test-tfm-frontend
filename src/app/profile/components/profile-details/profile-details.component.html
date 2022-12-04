@@ -47,6 +47,17 @@
       </div>
     </div>
 
+    <div *ngIf="isProducer" class="row mb-3">
+      <p class="form-label label-xl">{{ "profile.rating" | translate }}</p>
+      <star-rating [value]="user.rating" 
+                   [totalstars]="totalStars" 
+                   checkedcolor="yellow" 
+                   uncheckedcolor="grey" 
+                   size="20px" 
+                   [readonly]="readonly">
+      </star-rating>
+    </div>
+
     <button [ngClass]="isNotSubcribed ? '' : 'd-none'" (click)="subscribe()"
             type="button" class="btn btn-outline-success my-3 me-3 float-end"
             data-bs-toggle="tooltip" data-bs-placement="top" title="">
